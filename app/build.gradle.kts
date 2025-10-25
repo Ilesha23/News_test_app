@@ -90,6 +90,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
 
+    // Icons
+    implementation(libs.androidx.compose.material.icons.core)
+
     // Tests, debug, etc.
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
