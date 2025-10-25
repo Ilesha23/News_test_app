@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class NewsRepository @Inject constructor(
+class NewsRepositoryImpl @Inject constructor(
     private val articleDao: ArticleDao,
     private val mediatorFactory: MediatorFactory
 ) : NewRepository {
