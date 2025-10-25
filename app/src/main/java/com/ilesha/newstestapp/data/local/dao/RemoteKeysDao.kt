@@ -1,10 +1,12 @@
 package com.ilesha.newstestapp.data.local.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ilesha.newstestapp.data.local.entity.RemoteKeysEntity
 
+@Dao
 interface RemoteKeysDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
