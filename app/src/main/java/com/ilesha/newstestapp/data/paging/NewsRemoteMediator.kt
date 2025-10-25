@@ -15,12 +15,12 @@ import com.ilesha.newstestapp.data.remote.api.NewsApiService
 import com.ilesha.newstestapp.data.remote.dto.NewsResponseDto
 import com.ilesha.newstestapp.domain.model.NewsCategory
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import okio.IOException
 import retrofit2.HttpException
-import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class NewsRemoteMediator @Inject constructor(
+class NewsRemoteMediator @AssistedInject constructor(
     @Assisted private val queryId: String,
     @Assisted private val newsCategory: NewsCategory?,
     private val database: NewsDatabase,
