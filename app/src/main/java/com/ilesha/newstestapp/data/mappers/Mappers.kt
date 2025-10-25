@@ -19,46 +19,46 @@ fun ArticleDto.toDomainModel(): Article? {
 
     return Article(
         source = Source(
-            id = this.source?.id ?: "",
-            name = this.source?.name ?: ""
+            id = source?.id ?: "",
+            name = source?.name ?: ""
         ),
-        author = this.author ?: "",
-        title = this.title ?: "",
-        description = this.description ?: "",
+        author = author ?: "",
+        title = title ?: "",
+        description = description ?: "",
         url = url,
-        urlToImage = this.urlToImage ?: "",
+        urlToImage = urlToImage ?: "",
         publishedAt = publishedAt,
-        content = this.content ?: "",
+        content = content ?: "",
     )
 }
 
 fun Article.toArticleEntity(searchQuery: String): ArticleEntity {
     return ArticleEntity(
-        url = this.url,
+        url = url,
         searchQuery = searchQuery,
-        author = this.author,
-        title = this.title,
-        description = this.description,
-        urlToImage = this.urlToImage,
-        publishedAt = this.publishedAt,
-        content = this.content,
-        sourceName = this.source.name,
-        sourceId = this.source.id
+        author = author,
+        title = title,
+        description = description,
+        urlToImage = urlToImage,
+        publishedAt = publishedAt,
+        content = content,
+        sourceName = source.name,
+        sourceId = source.id
     )
 }
 
 fun ArticleEntity.toDomainModel(): Article {
     return Article(
         source = Source(
-            id = this.sourceId,
-            name = this.sourceName
+            id = sourceId,
+            name = sourceName
         ),
-        author = this.author,
-        title = this.title,
-        description = this.description,
-        url = this.url,
-        urlToImage = this.urlToImage,
-        publishedAt = this.publishedAt,
-        content = this.content
+        author = author,
+        title = title,
+        description = description,
+        url = url,
+        urlToImage = urlToImage,
+        publishedAt = publishedAt,
+        content = content
     )
 }
