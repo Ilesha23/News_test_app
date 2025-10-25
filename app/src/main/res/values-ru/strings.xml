@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">News test app</string>
+    <string name="bottom_nav_bar_label_search">Поиск</string>
+    <string name="bottom_nav_bar_label_categories">Категории</string>
+</resources>
