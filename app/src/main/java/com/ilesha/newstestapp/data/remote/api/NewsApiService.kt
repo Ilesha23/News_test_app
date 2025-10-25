@@ -21,6 +21,6 @@ interface NewsApiService {
         @Query("pageSize") pageSize: Int = 10,
         @Query("page") page: Int,
         @Query("apiKey") apiKey: String = BuildConfig.API_KEY
-    )
+    ): NewsResponseDto
 
 }
