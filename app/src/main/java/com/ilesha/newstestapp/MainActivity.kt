@@ -9,7 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.ilesha.newstestapp.ui.navigation.Navigation
+import com.ilesha.newstestapp.ui.navigation.NewsNavHost
+import com.ilesha.newstestapp.ui.navigation.BottomNavBar
 import com.ilesha.newstestapp.ui.theme.NewsTestAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,8 +22,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsTestAppTheme {
                 val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Navigation(
+                Scaffold(
+                    bottomBar = {
+                        BottomNavBar(
+                            navController = navController
+                        )
+                    },
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    NewsNavHost(
                         navController = navController,
                         modifier = Modifier
                             .padding(innerPadding)

@@ -5,21 +5,26 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.ilesha.newstestapp.ui.screen.home.HomeScreen
+import com.ilesha.newstestapp.ui.screen.categories.CategoriesScreen
+import com.ilesha.newstestapp.ui.screen.search.SearchScreen
 
 @Composable
-fun Navigation(
+fun NewsNavHost(
     navController: NavHostController,
     modifier: Modifier
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Home.route,
+        startDestination = Route.Search.route,
         modifier = modifier
     ) {
 
-        composable(Route.Home.route) {
-            HomeScreen()
+        composable(Route.Search.route) {
+            SearchScreen()
+        }
+
+        composable(Route.Categories.route) {
+            CategoriesScreen()
         }
 
     }
