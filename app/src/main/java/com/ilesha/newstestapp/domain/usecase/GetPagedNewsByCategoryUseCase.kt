@@ -7,7 +7,7 @@ import com.ilesha.newstestapp.domain.repository.NewRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetPagedNewsByCategory @Inject constructor(
+class GetPagedNewsByCategoryUseCase @Inject constructor(
     private val newRepository: NewRepository
 ) {
 
