@@ -19,10 +19,11 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopSearchBar
 import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -90,7 +91,9 @@ fun SearchScreenContent(
             onSearchTextChanged = {
                 onSearchTextChanged(it)
             },
-            onSearch = onSearch
+            onSearch = onSearch,
+            modifier = Modifier
+                .fillMaxWidth()
         )
         NewsContent(
             articles = articles,
@@ -110,33 +113,38 @@ fun SearchPanel(
     modifier: Modifier = Modifier
 ) {
     val focusManager = LocalFocusManager.current
-    TopSearchBar(
-        state = searchBarState,
-        inputField = {
-            SearchBarDefaults.InputField(
-                query = searchText,
-                onQueryChange = onSearchTextChanged,
-                onSearch = {
-                    onSearch(it)
-                    focusManager.clearFocus()
-                },
-                expanded = true,
-                onExpandedChange = {},
-                placeholder = {
-                    Text(
-                        text = stringResource(R.string.search_screen_search_bar_placeholder)
-                    )
-                },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Outlined.Search,
-                        contentDescription = stringResource(R.string.search_screen_search_bar_icon)
-                    )
-                },
-                modifier = modifier
-            )
-        }
-    )
+    Surface(
+        modifier = Modifier
+            .padding(vertical = 5.dp)
+    ) {
+        SearchBar(
+            state = searchBarState,
+            inputField = {
+                SearchBarDefaults.InputField(
+                    query = searchText,
+                    onQueryChange = onSearchTextChanged,
+                    onSearch = {
+                        onSearch(it)
+                        focusManager.clearFocus()
+                    },
+                    expanded = true,
+                    onExpandedChange = {},
+                    placeholder = {
+                        Text(
+                            text = stringResource(R.string.search_screen_search_bar_placeholder)
+                        )
+                    },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Search,
+                            contentDescription = stringResource(R.string.search_screen_search_bar_icon)
+                        )
+                    },
+                    modifier = modifier
+                )
+            }
+        )
+    }
 }
 
 @Composable
