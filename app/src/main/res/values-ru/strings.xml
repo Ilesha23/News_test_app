@@ -5,7 +5,7 @@
     <string name="bottom_nav_bar_label_categories">Категории</string>
     <string name="search_screen_search_bar_icon">Поиск</string>
     <string name="search_screen_search_bar_placeholder">Поиск новостей</string>
-    <string name="search_screen_empty_list_placeholder">Новости уже ждут вас, вперёд ✨</string>
+    <string name="search_screen_empty_list_placeholder">Новости уже ждут вас, вперёд на поиски ✨</string>
     <string name="search_screen_news_not_found">Главное, что плохих новостей нет, а хорошие еще можно поискать с помощью других запросов 😉</string>
     <string name="search_screen_search_error">Что-то не получилось и наши новости до вас не дошли 😢</string>
 </resources>
