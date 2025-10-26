@@ -44,21 +44,29 @@ fun NewsContent(
     modifier: Modifier = Modifier
 ) {
     val loadStateLocal = articles.loadState.mediator?.refresh
-    val loadStateRemote = articles.loadState.refresh
 
     when {
-        loadStateRemote is LoadState.Error -> {
+        loadStateLocal is LoadState.Error -> {
             NewsContentMessageBox(
                 stringResId = R.string.search_screen_search_error,
                 modifier = modifier
             )
         }
 
-        loadStateRemote is LoadState.NotLoading && loadStateLocal != null && articles.itemCount == 0 -> {
+        loadStateLocal is LoadState.NotLoading && articles.itemCount == 0 -> {
             NewsContentMessageBox(
                 stringResId = R.string.search_screen_news_not_found,
                 modifier = modifier
             )
+        }
+
+        loadStateLocal is LoadState.Loading -> {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = modifier
+            ) {
+                CircularProgressIndicator()
+            }
         }
 
         loadStateLocal == null -> {
@@ -66,15 +74,6 @@ fun NewsContent(
                 stringResId = R.string.search_screen_empty_list_placeholder,
                 modifier = modifier
             )
-        }
-
-        loadStateRemote is LoadState.Loading -> {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = modifier
-            ) {
-                CircularProgressIndicator()
-            }
         }
 
         else -> {
