@@ -13,7 +13,7 @@ interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllArticles(articles: List<ArticleEntity>)
 
-    @Query("SELECT * FROM article WHERE searchQuery = :queryId ORDER BY publishedAt DESC")
+    @Query("SELECT * FROM article WHERE searchQuery = :queryId")
     fun getPagingSourceByQuery(queryId: String): PagingSource<Int, ArticleEntity>
 
     @Query("DELETE FROM article WHERE searchQuery = :queryId")
