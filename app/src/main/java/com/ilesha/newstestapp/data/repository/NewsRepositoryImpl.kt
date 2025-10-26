@@ -10,8 +10,8 @@ import com.ilesha.newstestapp.data.mappers.toDomainModel
 import com.ilesha.newstestapp.data.paging.NewsRemoteMediator
 import com.ilesha.newstestapp.data.remote.api.ApiConstants
 import com.ilesha.newstestapp.domain.model.Article
-import com.ilesha.newstestapp.domain.model.NewsCategory
 import com.ilesha.newstestapp.domain.repository.NewRepository
+import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -26,8 +26,8 @@ class NewsRepositoryImpl @Inject constructor(
     @AssistedFactory
     interface MediatorFactory {
         fun create(
-            queryId: String,
-            newsCategory: NewsCategory?
+            @Assisted("queryId") queryId: String,
+            @Assisted("newsCategory") newsCategory: String?
         ): NewsRemoteMediator
     }
 
@@ -52,8 +52,8 @@ class NewsRepositoryImpl @Inject constructor(
             }
     }
 
-    override fun getPagedNewsByCategory(category: NewsCategory): Flow<PagingData<Article>> {
-        val categoryId = category.categoryName
+    override fun getPagedNewsByCategory(category: String): Flow<PagingData<Article>> {
+        val categoryId = category
         return Pager(
             config = PagingConfig(
                 pageSize = ApiConstants.PAGE_SIZE

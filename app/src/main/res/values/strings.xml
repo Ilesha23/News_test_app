@@ -8,4 +8,11 @@
     <string name="search_screen_empty_list_placeholder">The news is already waiting for you, go ahead and search ✨</string>
     <string name="search_screen_news_not_found">The main thing is that there is no bad news, but you can still find good news using other queries 😉</string>
     <string name="search_screen_search_error">Something went wrong and our news didn\'t reach you 😢</string>
+    <string name="category_business">Business</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_general">General</string>
+    <string name="category_health">Health</string>
+    <string name="category_science">Science</string>
+    <string name="category_sports">Sports</string>
+    <string name="category_technology">Technology</string>
 </resources>

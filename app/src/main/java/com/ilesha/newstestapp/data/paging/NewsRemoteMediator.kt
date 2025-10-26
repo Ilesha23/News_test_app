@@ -13,7 +13,6 @@ import com.ilesha.newstestapp.data.mappers.toDomainModel
 import com.ilesha.newstestapp.data.remote.api.ApiConstants
 import com.ilesha.newstestapp.data.remote.api.NewsApiService
 import com.ilesha.newstestapp.data.remote.dto.NewsResponseDto
-import com.ilesha.newstestapp.domain.model.NewsCategory
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import okio.IOException
@@ -21,8 +20,8 @@ import retrofit2.HttpException
 
 @OptIn(ExperimentalPagingApi::class)
 class NewsRemoteMediator @AssistedInject constructor(
-    @Assisted private val queryId: String,
-    @Assisted private val newsCategory: NewsCategory?,
+    @Assisted("queryId") private val queryId: String,
+    @Assisted("newsCategory") private val newsCategory: String?,
     private val database: NewsDatabase,
     private val newsApiService: NewsApiService
 ) : RemoteMediator<Int, ArticleEntity>() {
@@ -73,7 +72,7 @@ class NewsRemoteMediator @AssistedInject constructor(
     ): NewsResponseDto {
         return if (newsCategory != null) {
             newsApiService.getNewsByCategory(
-                category = newsCategory.categoryName,
+                category = newsCategory,
                 page = page,
                 pageSize = state.config.pageSize
             )
