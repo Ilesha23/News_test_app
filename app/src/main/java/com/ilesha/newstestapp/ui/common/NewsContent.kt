@@ -80,6 +80,7 @@ fun NewsContent(
         else -> {
             NewsList(
                 articles = articles,
+                loadState = articles.loadState.append,
                 modifier = Modifier
                     .fillMaxSize()
             )
@@ -106,6 +107,7 @@ fun NewsContentMessageBox(
 @Composable
 fun NewsList(
     articles: LazyPagingItems<Article>,
+    loadState: LoadState,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -120,6 +122,17 @@ fun NewsList(
                 ArticleCardItem(
                     article = article
                 )
+            }
+        }
+        item {
+            if (loadState is LoadState.Loading) {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    CircularProgressIndicator()
+                }
             }
         }
     }
