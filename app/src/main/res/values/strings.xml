@@ -3,4 +3,9 @@
     <string name="app_name">News test app</string>
     <string name="bottom_nav_bar_label_search">Search</string>
     <string name="bottom_nav_bar_label_categories">Categories</string>
+    <string name="search_screen_search_bar_icon">Search</string>
+    <string name="search_screen_search_bar_placeholder">Search for news</string>
+    <string name="search_screen_empty_list_placeholder">The news is already waiting for you, go ahead ✨</string>
+    <string name="search_screen_news_not_found">The main thing is that there is no bad news, but you can still find good news using other queries 😉</string>
+    <string name="search_screen_search_error">Something went wrong and our news didn\'t reach you 😢</string>
 </resources>

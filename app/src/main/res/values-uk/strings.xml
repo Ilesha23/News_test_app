@@ -3,4 +3,9 @@
     <string name="app_name">News test app</string>
     <string name="bottom_nav_bar_label_search">Пошук</string>
     <string name="bottom_nav_bar_label_categories">Категорії</string>
+    <string name="search_screen_search_bar_icon">Пошук</string>
+    <string name="search_screen_search_bar_placeholder">Пошук новин</string>
+    <string name="search_screen_empty_list_placeholder">Новини вже чекають на вас, вперед ✨</string>
+    <string name="search_screen_news_not_found">Головне, що поганих новин немає, а добрі ще можна пошукати за допомогою інших запитів 😉</string>
+    <string name="search_screen_search_error">Щось не вийшло і наші новини до вас не дійшли 😢</string>
 </resources>
