@@ -189,14 +189,14 @@ fun NewsContent(
             )
         }
 
-        loadStateRemote is LoadState.NotLoading && articles.itemCount == 0 -> {
+        loadStateRemote is LoadState.NotLoading && loadStateLocal != null && articles.itemCount == 0 -> {
             NewsContentMessageBox(
                 stringResId = R.string.search_screen_news_not_found,
                 modifier = modifier
             )
         }
 
-        loadStateRemote is LoadState.Loading && loadStateLocal == null -> {
+        loadStateLocal == null -> {
             NewsContentMessageBox(
                 stringResId = R.string.search_screen_empty_list_placeholder,
                 modifier = modifier
