@@ -2,6 +2,7 @@
 
 package com.ilesha.newstestapp.ui.screen.search
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -182,39 +183,24 @@ fun NewsContent(
 
     when {
         loadStateRemote is LoadState.Error -> {
-            Box(
-                contentAlignment = Alignment.Center,
+            NewsContentMessageBox(
+                stringResId = R.string.search_screen_search_error,
                 modifier = modifier
-            ) {
-                Text(
-                    text = stringResource(R.string.search_screen_search_error),
-                    textAlign = TextAlign.Center
-                )
-            }
+            )
         }
 
         loadStateRemote is LoadState.NotLoading && articles.itemCount == 0 -> {
-            Box(
-                contentAlignment = Alignment.Center,
+            NewsContentMessageBox(
+                stringResId = R.string.search_screen_news_not_found,
                 modifier = modifier
-            ) {
-                Text(
-                    text = stringResource(R.string.search_screen_news_not_found),
-                    textAlign = TextAlign.Center
-                )
-            }
+            )
         }
 
         loadStateRemote is LoadState.Loading && loadStateLocal == null -> {
-            Box(
-                contentAlignment = Alignment.Center,
+            NewsContentMessageBox(
+                stringResId = R.string.search_screen_empty_list_placeholder,
                 modifier = modifier
-            ) {
-                Text(
-                    text = stringResource(R.string.search_screen_empty_list_placeholder),
-                    textAlign = TextAlign.Center
-                )
-            }
+            )
         }
 
         loadStateRemote is LoadState.Loading -> {
@@ -233,6 +219,22 @@ fun NewsContent(
                     .fillMaxSize()
             )
         }
+    }
+}
+
+@Composable
+fun NewsContentMessageBox(
+    @StringRes stringResId: Int,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(stringResId),
+            textAlign = TextAlign.Center
+        )
     }
 }
 
