@@ -1,7 +1,7 @@
 package com.ilesha.newstestapp.ui.common
 
-import android.content.Intent
 import androidx.annotation.StringRes
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,7 +17,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
@@ -29,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemKey
@@ -39,7 +39,6 @@ import com.ilesha.newstestapp.domain.model.Article
 import com.ilesha.newstestapp.domain.model.Source
 import com.ilesha.newstestapp.utils.ext.formatToLocaleString
 import java.time.Instant
-import androidx.core.net.toUri
 
 @Composable
 fun NewsContent(
@@ -47,11 +46,9 @@ fun NewsContent(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val openBrowser: (String) -> Unit = remember(context) {
-        { url ->
-            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-            context.startActivity(intent)
-        }
+    val openCustomTab: (String) -> Unit = {
+        val customTabIntent = CustomTabsIntent.Builder().build()
+        customTabIntent.launchUrl(context, it.toUri())
     }
 
     val loadStateLocal = articles.loadState.mediator?.refresh
@@ -90,7 +87,7 @@ fun NewsContent(
             NewsList(
                 articles = articles,
                 loadState = articles.loadState.append,
-                onArticleClick = openBrowser,
+                onArticleClick = openCustomTab,
                 modifier = Modifier
                     .fillMaxSize()
             )

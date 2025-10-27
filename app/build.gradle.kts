@@ -97,6 +97,9 @@ dependencies {
     implementation(libs.coil.compose.android)
     implementation(libs.coil.network.okhttp)
 
+    // Browser (for custom tab)
+    implementation(libs.androidx.browser)
+
     // Tests, debug, etc.
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
